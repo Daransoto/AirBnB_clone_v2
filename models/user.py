@@ -8,6 +8,7 @@ import sqlalchemy
 from os import getenv
 from sqlalchemy.orm import relationship
 
+
 class User(BaseModel, Base):
     """This is the class for user
     Attributes:
