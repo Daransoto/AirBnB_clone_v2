@@ -48,6 +48,7 @@ class HBNBCommand(cmd.Cmd):
                     if len(my_list[i].split("=")) == 2:
                         key = my_list[i].split("=")[0]
                         value = my_list[i].split("=")[1].replace("_", " ")
+                        value = value.strip('"')
                         if value.isnumeric():
                             value = int(value)
                         else:
@@ -58,8 +59,7 @@ class HBNBCommand(cmd.Cmd):
                         params[key] = value
             obj = eval("{}()".format(my_list[0]))
             for key, val in params.items():
-                cmd.Cmd.onecmd(self, "update {} {} {} \
-                                '{}'".format(my_list[0], obj.id, key, val))
+                setattr(obj, key, val)
             obj.save()
             print("{}".format(obj.id))
         except SyntaxError:
