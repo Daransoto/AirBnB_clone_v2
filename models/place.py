@@ -57,9 +57,9 @@ class Place(BaseModel, Base):
         @property
         def amenities(self):
             """ Getter for amenities. """
-            return amenity_ids
+            return self.amenity_ids
 
         @amenities.setter
         def amenities(self, ins):
             if isinstance(ins, Amenity):
-                amenity_ids.append(ins)
+                self.amenity_ids.append(ins)
