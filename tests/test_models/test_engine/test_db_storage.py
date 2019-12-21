@@ -4,6 +4,8 @@ Contains the TestdbStorage
 """
 
 from sqlalchemy import create_engine
+import unittest
+import pep8
 from os import getenv
 from models.base_model import Base
 from models.city import City
@@ -24,9 +26,6 @@ class Test_dbstorage(unittest.TestCase):
         result = pep8s.check_files(['models/engine/db_storage.py'])
         self.assertEqual(result.total_errors, 0, "Code style errors found.")
 
-    def test_db_storage_module_docstring(self):
-        """Test for the file_storage.py module docstring"""
-        self.assertIsNotNone(file_storage.__doc__, "fix a docstring")
 
 if __name__ == "__main__":
     unittest.main()
