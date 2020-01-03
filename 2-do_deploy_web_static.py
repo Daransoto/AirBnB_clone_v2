@@ -9,6 +9,7 @@ from fabric.operations import put, run
 env.hosts = ["35.243.179.143", "35.237.105.68"]
 env.user = "ubuntu"
 
+
 def do_pack():
     """ Creates the tar file """
     newfile = "web_static_" + datetime.now().strftime("%Y%m%d%H%M%S") + ".tgz"
@@ -20,6 +21,7 @@ def do_pack():
         return "versions/" + newfile
     else:
         return None
+
 
 def do_deploy(archive_path):
     """ Makes the deployment """
@@ -33,7 +35,7 @@ def do_deploy(archive_path):
             .format(filename, filename[:-4]))
         run("rm /tmp/{}".format(filename))
         run("mv /data/web_static/releases/{}/web_static/* /data/web_static/\
-            releases/{}/".format(filename[:-4], filename[:-4]))
+releases/{}/".format(filename[:-4], filename[:-4]))
         run("rm -rf /data/web_static/releases/{}/web_static"
             .format(filename[:-4]))
         run("rm -rf /data/web_static/current")
