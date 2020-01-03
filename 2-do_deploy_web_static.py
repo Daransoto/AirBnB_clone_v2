@@ -33,7 +33,7 @@ def do_deploy(archive_path):
             .format(filename, filename[:-4]))
         run("rm /tmp/{}".format(filename))
         run("mv /data/web_static/releases/{}/web_static/* /data/web_static/\
-releases/{}/".format(filename[:-4], filename[:-4]))
+            releases/{}/".format(filename[:-4], filename[:-4]))
         run("rm -rf /data/web_static/releases/{}/web_static"
             .format(filename[:-4]))
         run("rm -rf /data/web_static/current")
