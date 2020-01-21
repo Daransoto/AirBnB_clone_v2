@@ -31,7 +31,7 @@ class DBStorage:
     def all(self, cls=None):
         """ Query on the current session all objects by class. """
         if cls is not None:
-            res = self.__session.query(cls)
+            res = self.__session.query(eval(cls)).all()
         else:
             res = self.__session.query(City).all()
             res += self.__session.query(State).all()
@@ -64,3 +64,7 @@ class DBStorage:
         sess = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess)
         self.__session = Session()
+
+    def close(self):
+        """ Close function. """
+        self.__session.close()
