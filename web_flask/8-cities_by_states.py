@@ -19,8 +19,7 @@ def teardown_app(Error):
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_states():
     return render_template('8-cities_by_states.html',
-                           states=storage.all("State"),
-                           cities=storage.all("City"))
+                           states=storage.all("State"))
 
 
 if __name__ == '__main__':
